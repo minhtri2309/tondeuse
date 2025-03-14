@@ -19,7 +19,8 @@ public class TestMower {
     MowerService mowerService;
 
     /**
-     * Read sample file, getting grid size, mowers initial position and instructions
+     * Read sample file, getting grid size, mowers initial position and instructions.
+     *
      * @throws IOException if file is not found
      */
     private void setupMowerService() throws IOException {
@@ -35,21 +36,17 @@ public class TestMower {
         iterator.next(); //skip lawn bounds
 
         while (iterator.hasNext()) {
-            Mower currentMower = new Mower();
 
-            //set initial position for current mower
+            //get initial position for current mower
             String initialPositionLine = iterator.next();
             String[] initialPosition = initialPositionLine.split(SPACE_REGEX);
             Position initialPositionValue = new Position(initialPosition);
-            currentMower.setCurrentPosition(initialPositionValue);
 
-            //set instructions for current mower
+            //get instructions for current mower and add to mower service
             if (iterator.hasNext()) {
                 List<Instruction> instructionList = parseInstructions(iterator.next());
-                currentMower.setInstructionList(instructionList);
+                mowerService.addMower(initialPositionValue, instructionList);
             }
-
-            mowerService.addMower(currentMower);
         }
     }
 
@@ -74,7 +71,6 @@ public class TestMower {
         Mower secondMower = mowerService.getMower(1);
 
         checkPosition(expectedFirstPosition, firstMower.getCurrentPosition());
-
         checkPosition(expectedSecondPosition, secondMower.getCurrentPosition());
     }
 

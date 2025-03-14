@@ -20,12 +20,12 @@ public class MowerService {
         this.mowerList.forEach(Mower::start);
     }
 
-    public void addMower(Mower mower) {
-        mower.setLawnGrid(lawnGrid);
-        mowerList.add(mower);
+    public void addMower(Position initialPositionValue, List<Instruction> instructionList) {
+        Mower mower = new Mower(initialPositionValue, instructionList, this.lawnGrid);
+        this.mowerList.add(mower);
     }
 
     public Mower getMower(int index) {
-        return mowerList.get(index);
+        return this.mowerList.get(index);
     }
 }

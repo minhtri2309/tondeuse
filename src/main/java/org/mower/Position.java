@@ -41,9 +41,9 @@ public class Position {
     }
 
     public void setPositionFromStrings(String[] position) {
-        this.x = Integer.valueOf(position[0]);
-        this.y = Integer.valueOf(position[1]);
-        this.orientation = Orientation.convertTo(position[2]);
+        this.x = Integer.parseInt(position[0]);
+        this.y = Integer.parseInt(position[1]);
+        this.orientation = Orientation.convertTo(position[2].charAt(0));
     }
 
 }
