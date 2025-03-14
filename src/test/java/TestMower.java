@@ -50,15 +50,6 @@ public class TestMower {
         }
     }
 
-    private List<Instruction> parseInstructions(String instructionsValue) {
-        List<Instruction> instructionList = new ArrayList<>();
-        for (char c : instructionsValue.toCharArray()) {
-            Instruction instruction = Instruction.convertTo(c);
-            instructionList.add(instruction);
-        }
-        return instructionList;
-    }
-
     @Test
     public void testMowers() throws IOException {
         Position expectedFirstPosition = new Position(1, 3, Orientation.North);
@@ -72,6 +63,15 @@ public class TestMower {
 
         checkPosition(expectedFirstPosition, firstMower.getCurrentPosition());
         checkPosition(expectedSecondPosition, secondMower.getCurrentPosition());
+    }
+
+    private List<Instruction> parseInstructions(String instructionsValue) {
+        List<Instruction> instructionList = new ArrayList<>();
+        for (char c : instructionsValue.toCharArray()) {
+            Instruction instruction = Instruction.convertTo(c);
+            instructionList.add(instruction);
+        }
+        return instructionList;
     }
 
     private void checkPosition(Position expectedPosition, Position mowerPosition) {

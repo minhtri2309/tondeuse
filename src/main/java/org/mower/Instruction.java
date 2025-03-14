@@ -1,5 +1,8 @@
 package org.mower;
 
+/**
+ * Instruction enum for moving mowers
+ */
 public enum Instruction {
 
     Droite('D'),

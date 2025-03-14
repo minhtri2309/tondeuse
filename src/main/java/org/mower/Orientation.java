@@ -1,5 +1,8 @@
 package org.mower;
 
+/**
+ * Orientation enum for mowers orientation
+ */
 public enum Orientation {
 
     North('N', 'E', 'W'),
